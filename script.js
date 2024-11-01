@@ -13,3 +13,9 @@ div_example.innerHTML = div_example.innerHTML + myString; // you can add string 
 const new_name = document.getElementsByName("new-name"); // selects all that have this name value
 new_name[2].innerHTML = new_name[2].innerHTML + " because of JS, this now displays the name 'Nick'"; // treat the variable as an array and target the element you want
 new_name[2].style.backgroundColor = "yellow"; // highlights the affected div
+
+// example of finding a div with no class or id and applying a class to it 
+const style_example = document.querySelectorAll("div"); // gets all elements that are divs
+console.log(style_example); // open the console and see how it lists every div within the html file
+console.log(style_example[4]); // console logs the div we're planning to add a class to 
+style_example[4].classList.add("violet-background"); // add class to the 5th div returned from querySelectorAll
