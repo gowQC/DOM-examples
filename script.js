@@ -26,7 +26,7 @@ console.log("==================================================");
 /*** EXAMPLE 5: using parentNode to find a parent element ***/
 const parent_example = document.querySelectorAll("li");
 console.log("Iterating through each li and checking for a parent: ")
-for (i = 0; i<parent_example.length; i++) { 
+for (i = 0; i < parent_example.length; i++) {
     console.log(parent_example[i].parentElement);
 } // basically, each li points to the SAME ul element - they all have the same parent
 console.log("They are all the same parent!")
@@ -50,3 +50,11 @@ console.log(children_example.lastChild.previousSibling.innerHTML);
 /*** EXAMPLE 7: querySelector targeting only the first element it finds ***/
 const singleQuery = document.querySelector("li"); // out of the many li elements that exist, querySelector will only target the first one it finds searching from top to bottom
 singleQuery.classList.add("violet-background"); // applies class to single li element
+
+/*** EXAMPLE 8: injecting elements into our HTML file ***/
+const inject_into = document.querySelector("ol");// target what we want to inject into
+for (i=0; i<3; i++) { // adds an li element to the ol 3 times
+    const element = document.createElement("li"); // creates an li element - must be included in the for loop
+    element.innerHTML = `This item was created and injected with JS and is item #${i+2}`;
+    inject_into.appendChild(element);
+}
