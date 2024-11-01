@@ -1,6 +1,6 @@
 /*** EXAMPLE 1: targeting an HTML element by its ID and modifying it with JS ***/
 const id_example = document.getElementById("h1-example");
-// another solution using querySelector instead of getElementByID: const id_example = document.querySelector("#h1-example");
+// ** another solution using querySelector instead of getElementByID: const id_example = document.querySelector("#h1-example");
 id_example.innerHTML = id_example.innerHTML + ", but because of JS the font color is now blue.";
 id_example.style.color = "blue";
 
@@ -45,6 +45,7 @@ console.log(children_example.lastChild); // should also end in text because of t
 console.log("Using the nextSibling and previousSibling properties on the elements we printed before: ");
 console.log(children_example.firstChild.nextSibling.innerHTML);
 console.log(children_example.lastChild.previousSibling.innerHTML);
+console.log("==================================================");
 // Now we are console logging the elements we would expect to see. In conclusion, consider white spaces, texts, and even HTML comments when grabbing children from an element!
 
 /*** EXAMPLE 7: querySelector targeting only the first element it finds ***/
@@ -52,9 +53,19 @@ const singleQuery = document.querySelector("li"); // out of the many li elements
 singleQuery.classList.add("violet-background"); // applies class to single li element
 
 /*** EXAMPLE 8: injecting elements into our HTML file ***/
-const inject_into = document.querySelector("ol");// target what we want to inject into
-for (i=0; i<3; i++) { // adds an li element to the ol 3 times
+// target what we want to inject into
+const inject_into = document.querySelector("ol");
+
+// prepend an element to the very beginning
+const added_element = document.createElement("li");
+added_element.innerHTML = "This was added into the ol with JS and is item #1";
+inject_into.prepend(added_element);
+// ** can also be done with insertBefore method:
+// inject_into.insertBefore(added_element, inject_into.firstChild);
+
+// adds an li element to the ol 3 times
+for (i = 0; i < 3; i++) {
     const element = document.createElement("li"); // creates an li element - must be included in the for loop
-    element.innerHTML = `This item was created and injected with JS and is item #${i+2}`;
+    element.innerHTML = `This item was created and injected with JS and is item #${i + 3}`;
     inject_into.appendChild(element);
 }
